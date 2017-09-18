@@ -8,6 +8,7 @@ export default class App extends Component(){
     componentWillMount() {
         this.fetchData();
     }
+    //get data from link
     fetchData = async () => {
         const response = await fetch("https://api.coinmarketcap.com/v1/ticker/?limit=10");
         const json = await response.json();
