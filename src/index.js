@@ -9,9 +9,9 @@ export default class App extends Component(){
         this.fetchData();
     }
     fetchData = async () => {
-        const response = await fetch("https://randomuser.me/api?results=500");
+        const response = await fetch("https://api.coinmarketcap.com/v1/ticker/?limit=10");
         const json = await response.json();
-        this.setState({ data: json.results });
+        this.setState({ data: json.limit});
     };
     render() {
         return (
@@ -21,7 +21,7 @@ export default class App extends Component(){
                     keyExtractor={(x, i) => i}
                     renderItem={({ item }) =>
                 <Text>
-                  {`${item.name.first} ${item.name.last}`}
+                  {`${item.id} ${item.name} ${item.symbol}`}
                 </Text>}
             />
           </View>
